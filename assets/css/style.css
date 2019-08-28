@@ -1,9 +1,11 @@
- 
+/*  
 div .card{
   float: left;
   padding: 3%;
-} 
-
+}  */
+*{
+  box-sizing: border-box;
+}
 .image{
   width: 100px;
   height: 130px;
@@ -12,6 +14,7 @@ div .card{
 }
 div{
   float: left;
+  padding: 3%
 }
 
 /*

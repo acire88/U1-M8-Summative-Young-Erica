@@ -12,35 +12,18 @@ let button5= `<button class="btn btn-primary" id="btn5">Show Description</button
 
 
 
-let summary1 =`"The BFG stands for Big Friendly Giant, who unexpectedly spirits a little girl named Sophie out of bed, and into the land 
-of the child-eating giants.  With Sophie in his top pocket, the BFG sets off to rid the world of the big, gruesome giants who guzzle up 
-'human beans' - the Bloodbottler, the Fleshlumpeater and all their rotsome friends.
-"`
-let summary2=` "There's a Boy in the Girls' Bathroom is a 1987 juvenile fiction book from the author Louis Sachar, about a fifth-grade bully 
-    named Bradley whose behavior improves after intervention from a school counselor. The title comes from a point when a character, 
-    Jeff, is horribly embarrassed after accidentally entering the girls' bathroom while trying to go to the school counselor's office 
-    when a teacher gives him the wrong directions."
+let summary1 =`The BFG stands for Big Friendly Giant, who unexpectedly spirits a little girl named Sophie out of bed, and into the land of the child-eating giants.  With Sophie in his top pocket, the BFG sets off to rid the world of the big, gruesome giants who guzzle up 'human beans' - the Bloodbottler, the Fleshlumpeater and all their rotsome friends.
 `
-let summary3= `"Thirteen-year-old Brian Robeson, haunted by his secret knowledge of his mother’s infidelity, is traveling by single-engine 
-plane to visit his father for the first time since the divorce. When the plane crashes, killing the pilot, the sole survivor is Brian. He 
-is alone in the Canadian wilderness with nothing but his clothing, a tattered windbreaker, and the hatchet his mother had given him as a 
-present."
+let summary2=`There's a Boy in the Girls' Bathroom is a 1987 juvenile fiction book from the author Louis Sachar, about a fifth-grade bully named Bradley whose behavior improves after intervention from a school counselor. The title comes from a point when a character, Jeff, is horribly embarrassed after accidentally entering the girls' bathroom while trying to go to the school counselor's office when a teacher gives him the wrong directions."
+`
+let summary3= `Thirteen-year-old Brian Robeson, haunted by his secret knowledge of his mother’s infidelity, is traveling by single-engine plane to visit his father for the first time since the divorce. When the plane crashes, killing the pilot, the sole survivor is Brian. He is alone in the Canadian wilderness with nothing but his clothing, a tattered windbreaker, and the hatchet his mother had given him as a present.
 `
 let summary4= `
-"Billy has long dreamt of owning not one, but two, dogs. So when he’s finally able to save up enough money for two pups to call his 
-own—Old Dan and Little Ann—he’s ecstatic. It doesn’t matter that times are tough; together they’ll roam the hills of the Ozarks.
+Billy has long dreamt of owning not one, but two, dogs. So when he’s finally able to save up enough money for two pups to call his own—Old Dan and Little Ann—he’s ecstatic. It doesn’t matter that times are tough; together they’ll roam the hills of the Ozarks.
 
-Soon Billy and his hounds become the finest hunting team in the valley. Stories of their great achievements spread throughout the region,
- and the combination of Old Dan’s brawn, Little Ann’s brains, and Billy’s sheer will seems unbeatable. But tragedy awaits these determined 
- hunters—now friends—and Billy learns that hope can grow out of despair, and that the seeds of the future can come from the scars of the 
- past."
+Soon Billy and his hounds become the finest hunting team in the valley. Stories of their great achievements spread throughout the region, and the combination of Old Dan’s brawn, Little Ann’s brains, and Billy’s sheer will seems unbeatable. But tragedy awaits these determined hunters—now friends—and Billy learns that hope can grow out of despair, and that the seeds of the future can come from the scars of the past.
 `
-let summary5= `"In ''Beloved,'' Ms. Morrison turns away from the contemporary scene that has been her concern of late. This new novel is set 
-after the end of the Civil War, during the period of so-called Reconstruction, when a great deal of random violence was let loose upon 
-blacks, both the slaves freed by Emancipation and others who had been given or had bought their freedom earlier. But there are flashbacks 
-to a more distant period, when slavery was still a going concern in the South and the seeds for the bizarre and calamitous events of the 
-novel were sown. The setting is similarly divided: the countryside near Cincinnati, where the central characters have ended up, and a 
-slave-holding plantation in Kentucky, ironically named Sweet Home, from which they fled 18 years before the novel opens."`
+let summary5= `In ''Beloved,'' Ms. Morrison turns away from the contemporary scene that has been her concern of late. This new novel is set after the end of the Civil War, during the period of so-called Reconstruction, when a great deal of random violence was let loose upon blacks, both the slaves freed by Emancipation and others who had been given or had bought their freedom earlier. But there are flashbacks to a more distant period, when slavery was still a going concern in the South and the seeds for the bizarre and calamitous events of the novel were sown. The setting is similarly divided: the countryside near Cincinnati, where the central characters have ended up, and a slave-holding plantation in Kentucky, ironically named Sweet Home, from which they fled 18 years before the novel opens."`
 
 class BookComponent {
     constructor(title, img, button1, summary){
@@ -52,15 +35,15 @@ class BookComponent {
    
 
         this.template = `
-       <div class="row">
+      
         
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 14rem;">
   <div class="card-img-top">${this.img}</div
   <div class="card-body">
     <h5 class="card-title">${this.title}</h5>
        ${this.button1}
         </div>
-    </div>
+    
         `
     }
 }
@@ -69,13 +52,15 @@ class BookListComponent{
 
     constructor(){
         this.template = `
-<div class="row">
+
+
         ${new BookComponent("The BFG", img, button1, summary1 ).template}
         ${new BookComponent("There's a Boy in the Girls Bathroom", img1, button2, summary2 ).template}
         ${new BookComponent("THe Hatchet", img2, button3, summary3 ).template}
         ${new BookComponent("Where the Red Fern Grows", img3, button4, summary4 ).template}
         ${new BookComponent("Beloved", img4, button5, summary1 ).template} 
-</div>
+
+<div class="md-col-6">
         <div class="card">
         <div class="card-header">
           Summary
@@ -90,6 +75,8 @@ class BookListComponent{
           </blockquote>
         </div>
       </div>
+      </div>
+      
 
         `
      
@@ -153,6 +140,20 @@ document.addEventListener('click', function(e){
                         }
                     }
                     })
+
+                    document.addEventListener('click', function(e){
+
+                        if(e.target && e.target.id=="btn5"){
+                            if(document.getElementById("btn5").textContent == "Hide Description"){
+                                document.getElementById("T5").innerText = ""
+                                document.getElementById("btn5").innerText = "Show Description"  
+                            }
+                            else { 
+                                document.getElementById("T5").innerText = summary5
+                                document.getElementById("btn5").innerText = "Hide Description"
+                            }
+                        }
+                        })
 
 
 document.getElementById("root").innerHTML=  `${new BookListComponent().template}`
