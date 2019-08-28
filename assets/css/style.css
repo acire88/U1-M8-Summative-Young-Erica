@@ -1,14 +1,17 @@
  
 div .card{
   float: left;
-  padding: 5%;
+  padding: 3%;
 } 
 
 .image{
-  width: 80px;
+  width: 100px;
   height: 130px;
   margin: 30px;
 
+}
+div{
+  float: left;
 }
 
 /*
